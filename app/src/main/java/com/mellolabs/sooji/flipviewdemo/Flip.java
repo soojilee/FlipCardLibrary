@@ -47,13 +47,105 @@ public class Flip extends RelativeLayout {
 
     }
 
+    public void setCurrentNum(int num){
+        switch (num){
+            case 0:
+                mImageTop.setImageResource(R.drawable.parts_0_top);
+                mImageBottom.setImageResource(R.drawable.parts_0_bottom);
+                break;
+            case 1:
+                mImageTop.setImageResource(R.drawable.parts_1_top);
+                mImageBottom.setImageResource(R.drawable.parts_1_bottom);
+                break;
+            case 2:
+                mImageTop.setImageResource(R.drawable.parts_2_top);
+                mImageBottom.setImageResource(R.drawable.parts_2_bottom);
+                break;
+            case 3:
+                mImageTop.setImageResource(R.drawable.parts_3_top);
+                mImageBottom.setImageResource(R.drawable.parts_3_bottom);
+                break;
+            case 4:
+                mImageTop.setImageResource(R.drawable.parts_4_top);
+                mImageBottom.setImageResource(R.drawable.parts_4_bottom);
+                break;
+            case 5:
+                mImageTop.setImageResource(R.drawable.parts_5_top);
+                mImageBottom.setImageResource(R.drawable.parts_5_bottom);
+                break;
+            case 6:
+                mImageTop.setImageResource(R.drawable.parts_6_top);
+                mImageBottom.setImageResource(R.drawable.parts_6_bottom);
+                break;
+            case 7:
+                mImageTop.setImageResource(R.drawable.parts_7_top);
+                mImageBottom.setImageResource(R.drawable.parts_7_bottom);
+                break;
+            case 8:
+                mImageTop.setImageResource(R.drawable.parts_8_top);
+                mImageBottom.setImageResource(R.drawable.parts_8_bottom);
+                break;
+            case 9:
+                mImageTop.setImageResource(R.drawable.parts_9_top);
+                mImageBottom.setImageResource(R.drawable.parts_9_bottom);
+                break;
+        }
+    }
+
+    public void flipTo(int num){
+        switch (num){
+            case 0:
+                mImageTopBack.setImageResource(R.drawable.parts_0_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_0_bottom);
+                break;
+            case 1:
+                mImageTopBack.setImageResource(R.drawable.parts_1_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_1_bottom);
+                break;
+            case 2:
+                mImageTopBack.setImageResource(R.drawable.parts_2_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_2_bottom);
+                break;
+            case 3:
+                mImageTopBack.setImageResource(R.drawable.parts_3_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_3_bottom);
+                break;
+            case 4:
+                mImageTopBack.setImageResource(R.drawable.parts_4_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_4_bottom);
+                break;
+            case 5:
+                mImageTopBack.setImageResource(R.drawable.parts_5_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_5_bottom);
+                break;
+            case 6:
+                mImageTopBack.setImageResource(R.drawable.parts_6_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_6_bottom);
+                break;
+            case 7:
+                mImageTopBack.setImageResource(R.drawable.parts_7_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_7_bottom);
+                break;
+            case 8:
+                mImageTopBack.setImageResource(R.drawable.parts_8_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_8_bottom);
+                break;
+            case 9:
+                mImageTopBack.setImageResource(R.drawable.parts_9_top);
+                mImageBottomBack.setImageResource(R.drawable.parts_9_bottom);
+                break;
+        }
+
+
+    }
+
     public void reset(){
         mImageTop.setVisibility(VISIBLE);
         mImageBottom.setVisibility(VISIBLE);
         mImageBottomBack.setVisibility(INVISIBLE);
     }
 
-    public void start(){
+    public void startAnimation(){
 
         Animation animTopIn = AnimationUtils.loadAnimation(getContext(), R.anim.flip_top_in);
         animTopIn.setAnimationListener(new Animation.AnimationListener() {
