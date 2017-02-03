@@ -3,13 +3,13 @@
     <ImageView
         android:id="@+id/image_top_back"
         android:src="@drawable/parts_1_top"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/image_top"
         android:src="@drawable/parts_0_top"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 
@@ -18,12 +18,12 @@
         android:id="@+id/image_bottom"
         android:src="@drawable/parts_0_bottom"
         android:layout_below="@id/image_top"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
         android:id="@+id/image_bottom_back"
         android:layout_below="@id/image_top"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
         android:src="@drawable/parts_1_bottom"/>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,6 +21,8 @@ public class Flip extends RelativeLayout {
     private ImageView mImageTop;
     private ImageView mImageBottom;
     private ImageView mImageBottomBack;
+    private boolean mShouldFlip = false;
+    private int mCurrentNum = -1;
 
 
     public Flip(Context context) {
@@ -48,6 +51,7 @@ public class Flip extends RelativeLayout {
     }
 
     public void setOrigNum(int num){
+        mCurrentNum = num;
         switch (num){
             case 0:
                 mImageTop.setImageResource(R.drawable.parts_0_top);
@@ -93,6 +97,15 @@ public class Flip extends RelativeLayout {
     }
 
     public void flipTo(int num){
+        if(num < 0 || num > 9){
+            Log.e("FLIP", "invalid input");
+            return;
+        }
+        if(mCurrentNum == num){
+            mShouldFlip = false;
+            return;
+        }
+        mShouldFlip = true;
         switch (num){
             case 0:
                 mImageTopBack.setImageResource(R.drawable.parts_0_top);
@@ -145,8 +158,11 @@ public class Flip extends RelativeLayout {
         mImageBottomBack.setVisibility(INVISIBLE);
     }
 
-    public void startAnimation(){
-
+    public void start(){
+        if(!mShouldFlip){
+//            Log.d("fLip", "set the number to flip to");
+            return;
+        }
         Animation animTopIn = AnimationUtils.loadAnimation(getContext(), R.anim.flip_top_in);
         animTopIn.setAnimationListener(new Animation.AnimationListener() {
             @Override

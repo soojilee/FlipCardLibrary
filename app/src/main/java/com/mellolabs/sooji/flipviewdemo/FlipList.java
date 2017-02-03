@@ -3,6 +3,7 @@ package com.mellolabs.sooji.flipviewdemo;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class FlipList extends LinearLayout {
     private ArrayList<Integer> mDigits;
     private int mCurrentNum;
     private int mNumDigitLimit=0;
-    private LinearLayout mNumContainer;
+
     private ArrayList<Integer> mNewDigits;
 
     public FlipList(Context context) {
@@ -37,24 +38,41 @@ public class FlipList extends LinearLayout {
     private void init(){
         mDigits = new ArrayList<>();
         mNewDigits = new ArrayList<>();
-        mNumContainer = new LinearLayout(getContext());
-        mNumContainer.setOrientation(HORIZONTAL);
+//        mNumContainer = new LinearLayout(getContext());
+        setOrientation(HORIZONTAL);
     }
 
     public void setNumber(int num){
+        if(num < 0){
+            Log.e("FLIPLIST", "cannot set negative numbers");
+            return;
+        }
         mCurrentNum = num;
-        while(num > 0) {
-            ++mNumDigitLimit;
-            mDigits.add(num % 10);
-            num = num / 10;
+        if(num == 0){
+            mDigits.add(0);
+        }else {
+            while (num > 0) {
+                ++mNumDigitLimit;
+                mDigits.add(num % 10);
+                num = num / 10;
+            }
         }
 
-        for(int i = mDigits.size()-1; i==0; --i){
+
+
+        for(int i = mDigits.size()-1; i >= 0; --i){
             Flip flip = new Flip(getContext());
             flip.setOrigNum(mDigits.get(i));
-            mNumContainer.addView(flip);
+            flip.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            addView(flip);
         }
 
+    }
+
+    public void start(){
+        for(int i=0; i<getChildCount(); ++i){
+            ((Flip)getChildAt(i)).start();
+        }
     }
 
     private int getNumDigits(int num){
@@ -73,12 +91,16 @@ public class FlipList extends LinearLayout {
         }
 
         while(num > 0) {
-            ++mNumDigitLimit;
             mNewDigits.add(num % 10);
             num = num / 10;
         }
 
-        
+        int j = mNewDigits.size()-1;
+
+        for(int i=0; i<mNewDigits.size(); ++i){
+            ((Flip) getChildAt(j)).flipTo(mNewDigits.get(i));
+            --j;
+        }
 
     }
 }

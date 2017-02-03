@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mellolabs.sooji.flipviewdemo.Flip
-        android:id="@+id/flip_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.mellolabs.sooji.flipviewdemo.FlipList
+        android:id="@+id/flip_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <Button
+        android:layout_below="@id/flip_list"
         android:id="@+id/btn_anim_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,9 +17,10 @@
         android:text="start animation!"/>
 
     <Button
+        android:layout_below="@id/btn_anim_start"
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="reset"
         android:layout_gravity="center_horizontal"/>
-</LinearLayout>
+</RelativeLayout>
