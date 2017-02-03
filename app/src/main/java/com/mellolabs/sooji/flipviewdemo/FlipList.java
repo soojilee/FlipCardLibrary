@@ -17,6 +17,7 @@ public class FlipList extends LinearLayout {
     private int mCurrentNum;
     private int mNumDigitLimit=0;
     private LinearLayout mNumContainer;
+    private ArrayList<Integer> mNewDigits;
 
     public FlipList(Context context) {
         super(context);
@@ -35,7 +36,9 @@ public class FlipList extends LinearLayout {
 
     private void init(){
         mDigits = new ArrayList<>();
+        mNewDigits = new ArrayList<>();
         mNumContainer = new LinearLayout(getContext());
+        mNumContainer.setOrientation(HORIZONTAL);
     }
 
     public void setNumber(int num){
@@ -46,13 +49,11 @@ public class FlipList extends LinearLayout {
             num = num / 10;
         }
 
-        
-
-
-
-    }
-
-    private void setUpFlipList(){
+        for(int i = mDigits.size()-1; i==0; --i){
+            Flip flip = new Flip(getContext());
+            flip.setOrigNum(mDigits.get(i));
+            mNumContainer.addView(flip);
+        }
 
     }
 
@@ -71,6 +72,13 @@ public class FlipList extends LinearLayout {
             return;
         }
 
+        while(num > 0) {
+            ++mNumDigitLimit;
+            mNewDigits.add(num % 10);
+            num = num / 10;
+        }
+
+        
 
     }
 }

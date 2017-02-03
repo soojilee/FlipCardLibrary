@@ -47,7 +47,7 @@ public class Flip extends RelativeLayout {
 
     }
 
-    public void setCurrentNum(int num){
+    public void setOrigNum(int num){
         switch (num){
             case 0:
                 mImageTop.setImageResource(R.drawable.parts_0_top);
